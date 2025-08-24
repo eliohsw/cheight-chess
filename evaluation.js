@@ -84,10 +84,10 @@ function Ev(stack,r,c,rK,bK){
              + Math.max( 0, pieceVal(top,r,c)+ (isRed(top) ? 1 : -1) * lambda*Ev(below,r,c,rK,bK)))
   }
   else{
-    return (isRed(top) ? 1 : -1) 
-           * ( controlScore(top,r,c,rK,bK) 
+    return (isRed(top) ? 1 : -1)
+           * ( controlScore(top,r,c,rK,bK)
              + pieceVal(top,r,c)
-             + lambda * Math.max( 0, Array.from({length: below.length}, (_, i) => (isRed(top) ? 1 : -1) *Ev(below.slice(i),r,c,rK,bK))))
+             + lambda * Math.max( 0, ...below.map((_, i) => (isRed(top) ? 1 : -1) * Ev(below.slice(i), r, c, rK, bK))))
   }
 }
 
